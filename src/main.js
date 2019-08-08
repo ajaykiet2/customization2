@@ -1,15 +1,13 @@
 import Vue from 'vue'
 import Customization from './Customization.vue'
+
 Vue.config.productionTip = false
-
+const target = document.querySelector('#app');
 new Vue({
-  render: h => h(Customization)
+  render: createElement => {
+    const context = {
+      props: { ...target.dataset },
+    };
+    return createElement(Customization, context);
+  }
 }).$mount('#app')
-
-// import Vue from 'vue';
-// import wrap from '@vue/web-component-wrapper';
-
-// import App from './App.vue'
-// const previewComponent = wrap(Vue, App);
-
-// window.customElements.define('preview-component', previewComponent);

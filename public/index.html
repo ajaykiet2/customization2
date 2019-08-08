@@ -5,23 +5,126 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c133f9b0f9.js"></script>
+    <title>techne</title>
     <style>
       body{
-        padding:0;
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        flex-wrap: nowrap;
         margin:0;
-        background-color: #EFEFEF!important;
+        padding: 0;
+      }
+
+      .left-menus{
+        width:14%;
+        background:#1c252c;
+        color:#FFF;
+      }
+      .left-menus> ul{
+        display: inline;
+        list-style: none;
+        padding:0;
+      }
+      .left-menus> ul > li{
+        padding:7px 20px;
+        border-top:1px solid #FFFFFF20;
+        font-size:11px;
+        color:#FFFFFF90;
+      }
+      .left-menus> ul > li > i{
+        color:#FFFFFF70;
+      }
+      .left-menus> ul > li.logo{
+        border-top:none;
+        padding:20px;
+        text-align: center;
+      }
+      .logo img{
+        width:100%;
+      }
+
+      .content{
+        width:86%;
+      }
+
+      .header{
+        color:#FFF;
+        height:35px;
+        background: #2c8333;
+        display: flex;
+        justify-content: space-between;
+      }
+      .header ul.left{
+        padding:0;
+        margin:4px;
+        display: inline-block;
+        list-style: none;
+      }
+      .header ul.left > li{
+        display: inline;
+        padding:10px;
+        font-size:18px;
+        color:#FFF;
+      }
+      .header ul.right{
+        padding:0 10px;
+        margin:4px;
+        display: inline-block;
+        list-style: none;
+      }
+      .header ul.right > li{
+        display: inline;
+        padding:20px;
+        line-height: 12px;
+        border-left:1px solid #FFFFFF50;
+        font-size:12px;
+        color:#ccc;
+      }
+      .input-sm{
+        border:none;
+        padding:2px 5px;
+        height:20px;
+        min-width:500px;
+        border-radius:2px;
+        margin-top:0;
+        margin-left:10px;
+        vertical-align: middle;
       }
     </style>
-    <title>SproutLoud - Customization 2.0</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but demo doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>We're sorry but techne doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <div class="left-menus">
+      <ul>
+        <li class="logo"><img src="./logo.png"></li>
+        <li><i class="fa fa-home"></i> Home</li>
+        <li><i class="fa fa-play"></i> Get Started</li>
+        <li><i class="fa fa-briefcase"></i> Orders & Activity</li>
+        <li><i class="fa fa-shopping-bag"></i> Claims</li>
+        <li><i class="fa fa-wallet"></i> Funds</li>
+        <li><i class="fa fa-signal"></i> Analytics & Reports</li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="header">
+        <div>
+          <ul class="left">
+            <li><i class="fa fa-bars"></i></li>
+            <li><input class="input-sm" type="text" placeholder="Search"/></li>
+          </ul>
+        </div>
+        <div>
+            <ul class="right">
+              <li>Help: 678-235-3456</li>
+              <li>Manage My Account</li>
+            </ul>
+          </div>
+      </div>
+      <div id="app" data-template_id="TM19060000129250" data-assignment_id="TA19060000129250" data-token="tokentokentokentoken"></div>
+    </div>
   </body>
 </html>

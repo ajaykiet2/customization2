@@ -1,4 +1,4 @@
-# demo
+# techne
 
 ## Project setup
 ```
@@ -14,10 +14,7 @@ npm run serve
 ```
 npm run build
 ```
-### Build WebComponents
-```
-vue build --target wc-async --name <component-name> [entry file]
-```
+
 ### Run your tests
 ```
 npm run test

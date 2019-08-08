@@ -1,62 +1,52 @@
 <template>
-  <div id="app">
-    <block-UI 
-      :data="loader"
-      @cancel="cancelled"
-    ></block-UI>
-    <div class="container">
-      <preview-component template_id="TM001" assignment_id="TA001" @loading="loading"></preview-component>
-    </div>
+  <div>
+    <ErrorLayout v-if="errors.length">
+      <span slot="title">
+        {{errors}}
+      </span>
+    </ErrorLayout>
+    <CustomizationLayout v-else-if="tree.length"/>
   </div>
+  
 </template>
+
 <script>
-import 'bootstrap/dist/css/bootstrap.min.css'
-import PreviewComponent from './components/wrappers/PreviewComponent.vue'
-import BlockUI from './components/modals/BlockUI'
+
+// import dependencies
+import CustomizationLayout from './components/layout/CustomizationLayout.vue'
+import ErrorLayout from './components/layout/ErrorLayout.vue'
 import store from './store'
+import { mapState, mapActions } from 'vuex'
+
 export default {
   name: 'Customization',
   store,
-  data(){
-    return {
-      loader:{
-        display: false,
-        title: "Hold tight!",
-        subtitle: "We are applying default profile to this template",
-        description: "We're currently rendering your creative. Please be patient. If something goes wrong, we'll tell you. This can sometimes take up to 30 seconds." 
-      }
-    }
+  props:{
+    token         : { type: String, required: true },
+    template_id   : { type: String, required: true },
+    assignment_id : { type: String, required: true }
   },
   components: {
-    BlockUI,
-    PreviewComponent,
+    CustomizationLayout,
+    ErrorLayout
   },
-  mounted(){
-    // Fetching data from api and pass to tree structure
-    this.loader.display = false
-    setTimeout(() => {
-      this.loader.display = false
-    }, 3000);
-  },
-  methods:{
-    cancelled(){
-      this.loader.display = false
-    },
-    loading(){
-      this.loader.display = true
-      setTimeout(() => {
-        this.loader.display = false
-      }, 5000);
-    }
+  computed: mapState({
+    tree: state => state.template.tree,
+    errors: state => state.template.errors
+  }),
+
+  // methods: mapActions(
+  //   'template', // module name
+  //   [ 'getTreeData' ] // action methods
+  // ),
+
+  created () {
+    this.$store.dispatch('auth/setToken',this.token);
+    
+    this.$store.dispatch('template/getTreeData',{
+      template_id:this.template_id,
+      assignment_id: this.assignment_id
+    })
   }
 }
 </script>
-<style scoped>
-.container{
-    padding-bottom:300px;
-    background:#FFF;
-    padding-top: 10px;
-    padding: 20px 30px;
-    border-top: 3px solid rgb(6, 155, 18) 
-  }
-</style>
